@@ -51,7 +51,7 @@ const swiper = new Swiper(".swiper", {
   spaceBetween: 30,
   autoplay: {
     delay: 3000,
-    diableOnInteraction: false,
+    disableOnInteraction: false,
   },
 
   // If we need pagination
