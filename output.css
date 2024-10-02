@@ -843,6 +843,10 @@ video {
   max-width: 20rem;
 }
 
+.max-w-sm{
+  max-width: 24rem;
+}
+
 .grow{
   flex-grow: 1;
 }
@@ -1620,6 +1624,10 @@ h3{
     width: 50%;
   }
 
+  .sm\:w-auto{
+    width: auto;
+  }
+
   .sm\:max-w-md{
     max-width: 28rem;
   }
@@ -1630,6 +1638,10 @@ h3{
 
   .sm\:items-center{
     align-items: center;
+  }
+
+  .sm\:p-6{
+    padding: 1.5rem;
   }
 
   .sm\:text-2xl{
@@ -1670,6 +1682,10 @@ h3{
 
   .md\:w-52{
     width: 13rem;
+  }
+
+  .md\:max-w-md{
+    max-width: 28rem;
   }
 
   .md\:grid-cols-2{
