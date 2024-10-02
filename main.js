@@ -119,6 +119,40 @@ sr.reveal('.about__item__2-content, about__item__1-img', {origin: "left"})
 
 sr.reveal('.review__leaf, footer__floral', {delay:1000, origin: "left"})
 
+/*~~~~~~~~~~~~~~~ ORDER POPOUP ~~~~~~~~~~~~~~~*/
+// Open the popup
+document.querySelectorAll('.bg-yellow-500').forEach(button => {
+  button.addEventListener('click', () => {
+    document.getElementById('popupForm').classList.remove('hidden');
+  });
+});
 
+// Close the popup
+document.getElementById('cancelBtn').addEventListener('click', () => {
+  document.getElementById('popupForm').classList.add('hidden');
+});
+
+// Handle form submission
+document.getElementById('orderForm').addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const formData = {
+    name: document.getElementById('name').value,
+    address: document.getElementById('address').value,
+    phone: document.getElementById('phone').value,
+  };
+
+  // Send data to backend API
+  await fetch('http://localhost:5500/api/order', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+
+  // Close the popup
+  document.getElementById('popupForm').classList.add('hidden');
+});
 
 
