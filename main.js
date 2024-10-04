@@ -120,14 +120,14 @@ sr.reveal('.about__item__2-content, about__item__1-img', {origin: "left"})
 sr.reveal('.review__leaf, footer__floral', {delay:1000, origin: "left"})
 
 /*~~~~~~~~~~~~~~~ ORDER POPOUP ~~~~~~~~~~~~~~~*/
-// Open the popup
+// Open the form popup
 document.querySelectorAll('.bg-yellow-500').forEach(button => {
   button.addEventListener('click', () => {
     document.getElementById('popupForm').classList.remove('hidden');
   });
 });
 
-// Close the popup
+// Close the form popup
 document.getElementById('cancelBtn').addEventListener('click', () => {
   document.getElementById('popupForm').classList.add('hidden');
 });
@@ -139,6 +139,9 @@ document.getElementById('orderForm').addEventListener('submit', async (event) =>
   const formData = {
     name: document.getElementById('name').value,
     address: document.getElementById('address').value,
+    city: document.getElementById('city').value,
+    state: document.getElementById('state').value,
+    pin: document.getElementById('pin').value,
     phone: document.getElementById('phone').value,
   };
 
@@ -151,8 +154,15 @@ document.getElementById('orderForm').addEventListener('submit', async (event) =>
     body: JSON.stringify(formData),
   });
 
-  // Close the popup
+  // Close the form popup
   document.getElementById('popupForm').classList.add('hidden');
+
+  // Show the success card
+  document.getElementById('successCard').classList.remove('hidden');
 });
 
+// Close the success card
+document.getElementById('closeSuccessBtn').addEventListener('click', () => {
+  document.getElementById('successCard').classList.add('hidden');
+});
 
