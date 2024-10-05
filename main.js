@@ -122,7 +122,15 @@ sr.reveal('.review__leaf, footer__floral', {delay:1000, origin: "left"})
 /*~~~~~~~~~~~~~~~ ORDER POPOUP ~~~~~~~~~~~~~~~*/
 // Open the form popup
 document.querySelectorAll('.bg-yellow-500').forEach(button => {
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (event) => {
+    // Get the product name from the card
+    const card = event.target.closest('.popular__card');
+    const productName = card.querySelector('h3').innerText;
+
+    // Set the product name in the label inside the popup form
+    document.getElementById('productLabel').innerText = `Product Name: ${productName}`;
+
+    // Show the popup form
     document.getElementById('popupForm').classList.remove('hidden');
   });
 });
@@ -136,6 +144,8 @@ document.getElementById('cancelBtn').addEventListener('click', () => {
 document.getElementById('orderForm').addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  const productName = document.getElementById('productLabel').innerText.replace('Product Name: ', '');
+
   const formData = {
     name: document.getElementById('name').value,
     address: document.getElementById('address').value,
@@ -143,6 +153,7 @@ document.getElementById('orderForm').addEventListener('submit', async (event) =>
     state: document.getElementById('state').value,
     pin: document.getElementById('pin').value,
     phone: document.getElementById('phone').value,
+    productName,
   };
 
   // Send data to backend API

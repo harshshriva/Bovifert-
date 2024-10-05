@@ -663,6 +663,14 @@
         </h2>
         <form id="orderForm" class="max-h-96 overflow-y-auto p-4 space-y-4">
           <div class="mb-5">
+            <label
+              id="productLabel"
+              class="block text-gray-700 font-medium mb-1"
+            >
+              Product Name:
+            </label>
+          </div>
+          <div class="mb-5">
             <label for="name" class="block text-gray-700 font-medium mb-1"
               >Full name:</label
             >
@@ -732,6 +740,9 @@
               name="phone"
               class="w-full border border-gray-300 p-3 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              pattern="^\d{10}$"
+              title="Please enter a valid 10-digit phone number"
+              maxlength="10"
             />
           </div>
           <div class="flex flex-col sm:flex-row justify-end gap-4">
