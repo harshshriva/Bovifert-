@@ -158,7 +158,7 @@ document.getElementById('orderForm').addEventListener('submit', async (event) =>
 
   // Send data to backend API
   try {
-    const response = await fetch('https://bovifert-backend.onrender.com/api/order', {
+    const response = await fetch('http://localhost:5500/api/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
