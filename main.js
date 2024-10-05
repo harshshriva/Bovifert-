@@ -157,13 +157,25 @@ document.getElementById('orderForm').addEventListener('submit', async (event) =>
   };
 
   // Send data to backend API
-  await fetch('http://localhost:5500/api/order', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  });
+  try {
+    const response = await fetch('http://localhost:5500/api/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+  
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status} ${response.statusText}`);
+    }
+  
+    const responseData = await response.json();
+    console.log('Success:', responseData);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  
 
   // Close the form popup
   document.getElementById('popupForm').classList.add('hidden');
