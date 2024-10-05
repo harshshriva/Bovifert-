@@ -157,7 +157,7 @@ document.getElementById('orderForm').addEventListener('submit', async (event) =>
   };
 
   // Send data to backend API
-  await fetch('http://localhost:5500/api/order', {
+  await fetch('https://harshshriva.github.io/Bovifert-/api/order', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
